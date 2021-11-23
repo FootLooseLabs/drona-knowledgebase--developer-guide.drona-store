@@ -1,0 +1,27 @@
+{
+  "name": "drona_development_guide",
+  "version": "1.0.0",
+  "description": "drona development guide",
+  "config": {
+    "port": "8010",
+    "local_dir": "site/",
+    "root_object": "index.html",
+    "s3": "developers.footloose.io",
+    "cf_id": "EWQY3D0E2YBOZ",
+    "iam": "iam_ankur"
+  },
+  "scripts": {
+    "update-s3": "aws s3 sync $npm_package_config_local_dir s3://$npm_package_config_s3 --profile $npm_package_config_iam",
+    "update-cdn": "aws cloudfront update-distribution --id $npm_package_config_cf_id --default-root-object $npm_package_config_root_object --profile $npm_package_config_iam",
+    "force_cdn_invalidation": "aws cloudfront create-invalidation --distribution-id $npm_package_config_cf_id --paths '/*' --profile $npm_package_config_iam",
+    "build": "mkdocs build",
+    "dev": "mkdocs serve",
+    "deploy": "npm run update-s3 && npm run update-cdn && npm run force_cdn_invalidation"
+  },
+  "author": "footloose.io",
+  "license": "ISC",
+  "devDependencies": {
+  },
+  "dependencies": {
+  }
+}

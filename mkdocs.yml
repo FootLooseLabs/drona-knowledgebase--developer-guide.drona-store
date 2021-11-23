@@ -1,0 +1,48 @@
+site_name: Drona Development Guide (under const)
+site_url: https://wiki.development.drona.footloose.io/
+theme:
+  name: 'material'
+  features:
+    - navigation.expand
+    - navigation.indexes
+copyright: Copyright &copy; 2021, <a target='_blank' href='https://drona.footloose.io'>Drona by footloose-labs</a>
+extra:
+  generator: false
+plugins:
+  - search
+  - mermaid2
+markdown_extensions:
+  - attr_list
+nav:
+  - Quickstart: 
+    - Introduction: quickstart/introduction.md
+    - Getting Started: quickstart/getting_started.md
+    - ToDos: quickstart/todos.md
+  - Implementation Traceability: implementation_ref.md
+  - System Architechture:
+    - Overview: system_architechture/overview.md
+    - Drona AutoStore: system_architechture/drona_autostore.md
+    - Drona Org Moderator: system_architechture/drona_org_moderator.md
+    - AGENTs:
+      - Overview: agents/overview.md
+      - Drona/Store-Execution-Agent: agents/store_execution_agent.md
+      - Drona/ROR-Taskspace: agents/ror_taskspace.md
+      - Drona/ROR-ExecutionSpace: agents/ror_executionspace.md
+      - Blackbox/Plc: agents/blackbox_plc.md
+      - Rtc/WebrequestHandler: agents/webrequest_handler.md
+    - HAIs:
+      - SDK: hais/sdk.md
+      - Operator-App: 
+        - Overview: hais/operator_app/overview.md
+        - components/IOA: hais/operator_app/ioa.md
+        - components/OOA: hais/operator_app/ooa.md
+        - components/ROA: hais/operator_app/roa.md
+        - components/connection: hais/operator_app/connection.md
+      - Picker-Packer-App: hais/picker_packer.md
+      - Drona-Org-App: hais/org_app.md
+  - Testing: 
+    - In-situ Testing: insitu_testing.md
+  - ENVIRONMENTs:
+    - logical-env: environments/logical_envs.md
+    - host-machine-envs: environments/host_machine_envs.md
+    - runtimes: environments/runtimes.md
