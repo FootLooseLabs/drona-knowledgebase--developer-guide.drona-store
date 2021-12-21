@@ -39,6 +39,24 @@ stateDiagram-v2
     Crash --> [*]
 ```
 
+### Environment Variables required
+
+```text
+DATABASE_URL=""
+ORDER_EXP_TIME=1800
+ORDERSPACE_VISIBILITY_DURATION=1800
+CLEAR_TASK_SCRIPT_PATH = ""
+DUPLICATE_ORDER_TIME_WINDOW=60
+CHECK_FOR_DUPLICATE_ORDERS=true
+```
+- DATABASE_URL -> Mongo db URL
+- ORDER_EXP_TIME -> if an order/prescription is not fulfilled in this many seconds - it is assumed to be errored so that further orders are not blocked beyond this many seconds )
+- ORDERSPACE_VISIBILITY_DURATION -> this sets the default duration for which ViewOrders will return the orders for...
+- CLEAR_TASK_SCRIPT_PATH -> Path to the shell script file to clear all orders
+- DUPLICATE_ORDER_TIME_WINDOW -> Cutoff time to ignore same order if ordered within this timeframe
+- CHECK_FOR_DUPLICATE_ORDERS -> To enable checking of duplicate orders within timeframe
+
+
 ## Dispense Request
 This request will Dispense the order.
 sample json payload which can be sent using api-tester app
@@ -93,6 +111,17 @@ when this request is sent the robot will try to dispense the prescribed items
 #### Ideal Behaviour 
 1. request is received then items in request are checked if they are present in the robot inventory
 2. after that robot will try to check if the item present in the inventory is present in the bin which is functional if the item is present in the disabled bin then it will not take the request for that item. the requested item which is present in the enabled bin the dispensing process will start for that
+
+```mermaid
+graph TD
+    request[Request Received] --> item_check{item Exists}
+    item_check --> |Item does not Exist| finish_request[add to error]
+    item_check --> |Item Exist| bin_check{Bin Enabled}
+    bin_check --> |Bin Enabled| a{Item at station}
+    bin_check --> |Bin Disabled| b[add to error]
+    a --> |Item already at station| c[add to error]
+    a --> d[dispense item]
+```
 
 
 ## Disable Bin Request
