@@ -13,7 +13,7 @@
 > `git clone --single-branch --branch rpi <repo-url> <recommended_name>` <br/>
 > <i>(clone the `rpi` branch of the following)</i> <br/><br/>
 > <i><span style="color:blue">recommended_name</span> : `<repo_url>` --></i> <br/><br/>
-> 1. <span style="color:blue">webrequest_handler: </span> `https://bitbucket.org/footlooselabs/request_handler` <br/>
+> 1. <span style="color:blue">rtc_webrequest_handler: </span> `https://bitbucket.org/footlooselabs/request_handler` <br/>
 > 2. <span style="color:blue">ror_agent:</span> `https://bitbucket.org/drona-footloose/drona-ror-agent` <br/>
 > 3. <span style="color:blue">fsm_agent:</span> `https://github.com/FootLooseLabs/atom.fsm` <br/>
 > 4. <span style="color:blue">ror_taskspace:</span> `https://bitbucket.org/footlooselabs/drona.ror-interface` <br/>
