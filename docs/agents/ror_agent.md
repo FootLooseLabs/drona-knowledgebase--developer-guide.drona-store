@@ -20,7 +20,7 @@ SEED=true
 - PLC_ID -> id for PLC
 - SEED -> to seed the data for first run it will be true then it can be set to false
 
-## Connection Between ROR and FSM Agent
+## Connection Between ROR.Executor and FSM Agent
 
 ```mermaid
 flowchart TB
